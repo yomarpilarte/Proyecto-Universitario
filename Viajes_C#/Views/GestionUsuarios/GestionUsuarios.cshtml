@@ -1,0 +1,218 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Gestion de Usuarios";
+}
+
+   @using Viajes.Models.DTO
+    @model List<UsuarioDetalleDTO>
+@if (Model == null)
+{
+    <div class="alert alert-danger">Error al cargar los usuarios. Intente nuevamente.</div>
+    return;
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold">Gestión de Usuarios</h2>
+    <p class="text-muted">Administra los empleados y sus permisos</p>
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Mensaje"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Tarjetas resumen -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">Total Usuarios</h6>
+                    <h3 class="fw-bold">@Model.Count</h3>
+                    <p class="text-muted">En el sistema</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">Usuarios Activos</h6>
+                    <h3 class="fw-bold">@Model.Count(u => u.Estado == "Activo")</h3>
+                    <p class="text-muted">Con acceso</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">Usuarios Inactivos</h6>
+                    <h3 class="fw-bold">@Model.Count(u => u.Estado == "Inactivo")</h3>
+                    <p class="text-muted">Sin acceso</p>
+                </div>
+            </div>
+        </div>
+        @{
+            var rol = Context.Session.GetString("nivel") ?? "";
+        }
+
+        @if (rol == "Administrador")
+        {
+            <div class="col-md-3 d-flex align-items-center justify-content-end">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario">
+                    + Agregar Usuario
+                </button>
+            </div>
+        }
+    </div>
+    <!-- Filtro -->
+
+    <form asp-action="Filtrar" method="post" class="row mb-4">
+        <div class="col-md-2"><input type="text" name="Nombre" class="form-control" placeholder="Nombre" /></div>
+        <div class="col-md-2"><input type="text" name="Correo" class="form-control" placeholder="Correo" /></div>
+        <div class="col-md-2">
+            <select name="Rol" class="form-select">
+                <option value="">-- Rol --</option>
+                <option>Empleado</option>
+                <option>Supervisor</option>
+                <option>Auditor</option>
+                <option>Administrador</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="Estado" class="form-select">
+                <option value="">-- Estado --</option>
+                <option>Activo</option>
+                <option>Inactivo</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="IdUsuario" class="form-control" placeholder="ID Usuario" min="1" step="1" max="999999" />
+        </div>
+        <div class="col-md-2"><button type="submit" class="btn btn-outline-primary w-100">Filtrar</button></div>
+    </form>
+
+    <!-- Tabla -->
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Cédula</th>
+                    <th>Departamento</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var u in Model)
+                {
+                
+
+                    <tr>
+                        <td>@($"{u.PrimerNombre} {u.SegundoNombre} {u.PrimerApellido} {u.SegundoApellido}")</td>
+                        <td>@u.Correo</td>
+                        <td>@u.Cedula</td>
+                        <td>@u.Departamento</td>
+                        <td>@u.Rol</td>
+                        <td>
+                            <span class="badge @(u.Estado == "Activo" ? "bg-success" : "bg-secondary")">@u.Estado</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                @if (rol != "Auditor")
+                                {
+                                    <button class="btn btn-sm btn-warning" onclick="editarUsuario(@u.IdUsuario)">
+                                        Actualizar
+                                    </button>
+                                }
+
+                                <button class="btn btn-sm btn-warning"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalEstadoUsuario"
+                                        data-id="@u.IdUsuario"
+                                        data-estado="@u.Estado">
+                                    Actualizar Estado
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modales -->
+@Html.Partial("AgregarUsuario")
+@if (rol != "Auditor")
+{
+    @Html.Partial("EditarUsuario")
+}
+@Html.Partial("ActualizarEstado")
+
+
+@section Scripts {
+    <script>
+        // Cargar datos en el modal al abrir
+        const modalEstado = document.getElementById('modalEstadoUsuario');
+        modalEstado.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const id = button.getAttribute('data-id');
+            const estado = button.getAttribute('data-estado');
+
+            modalEstado.querySelector('[name="IdUsuario"]').value = id;
+            modalEstado.querySelector('[name="EstadoActual"]').value = estado;
+            modalEstado.querySelector('[name="NuevoEstado"]').value = estado === "Activo" ? "Inactivo" : "Activo";
+        });
+
+        // Enviar formulario del modal por AJAX
+        $(document).on('submit', '#modalEstadoUsuario form', function (e) {
+            e.preventDefault();
+            const form = $(this);
+            const data = form.serialize();
+
+            console.log("Datos enviados:", data);
+
+            $.post('/GestionUsuarios/CambiarEstado', data)
+                .done(function (res) {
+                    if (res.success) {
+                        alert(res.message);
+                        $('#modalEstadoUsuario').modal('hide');
+                        location.reload(); // refresca la tabla
+                    } else {
+                        alert("⚠️ " + res.message);
+                    }
+                })
+                .fail(function () {
+                    alert('❌ Error al procesar la solicitud.');
+                });
+        });
+    </script>
+}
+
+
+
+<script>
+        function editarUsuario(idUsuario) {
+        $.get('/GestionUsuarios/ObtenerUsuario', { idUsuario: idUsuario }, function (data) {
+            // Cargar inputs en el modal
+            $('#modalEditarUsuario .modal-body').html(data);
+            // Abrir modal
+            $('#modalEditarUsuario').modal('show');
+        }).fail(function() {
+            alert('Error al cargar datos del usuario');
+        });
+    }
+
+</script>
+

@@ -1,0 +1,143 @@
+﻿@{
+    var nombre = ViewContext.HttpContext.Session.GetString("nombre") ?? "Usuario";
+    var nivel = ViewContext.HttpContext.Session.GetString("nivel") ?? "";
+    var correo = ViewContext.HttpContext.Session.GetString("correo") ?? "correo@empresa.com";
+    var iniciales = string.Join("", nombre.Split(" ").Select(p => p[0])).ToUpperInvariant();
+
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Viajes</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- CSS del proyecto -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Viajes.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <!-- Marca del sitio -->
+                <a class="navbar-brand fw-semibold text-primary" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-receipt me-1"></i>Control de Viajes
+                </a>
+
+                <!-- Botón menú móvil -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Enlaces y usuario -->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between align-items-center">
+                    <ul class="navbar-nav flex-grow-1">
+                        @* Solicitudes: todos los roles *@
+                        
+                        
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="GestionSolicitudes" asp-action="SolicitudesEmpleado">Solicitudes</a>
+                            </li>
+                        
+                        @* Aprobación Solicitudes: solo Supervisor *@
+                        @if (nivel == "Supervisor")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="GestionSolicitudes" asp-action="RevisionSolicitudes">Aprobación Solicitudes</a>
+                            </li>
+                        }
+
+                        @* Gestión de Usuarios: Auditor y Administrador *@
+                        @if (nivel == "Auditor" || nivel == "Administrador")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="GestionUsuarios" asp-action="GestionUsuarios">Gestión de Usuarios</a>
+                            </li>
+                        }
+
+                        @* Gastos: todos los roles *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Gastos" asp-action="Gastos">Gastos</a>
+                        </li>
+
+                        @* Aprobación Solicitudes Admin: solo Administrador *@
+                        @if (nivel == "Administrador")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="GestionSolicitudes" asp-action="AprobacionAdmin">Aprobación Solicitudes</a>
+                            </li>
+                        }
+
+                        @* Reportes: solo Administrador *@
+                        @if (nivel == "Administrador")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Reportes" asp-action="Reportes">Reportes</a>
+                            </li>
+                        }
+
+                        @* Auditoría: solo Auditor *@
+                        @if (nivel == "Auditor")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Auditoria" asp-action="Auditoria">Auditoría</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <!-- Usuario dropdown -->
+                    <div class="dropdown me-2">
+                        <a class="d-flex align-items-center text-decoration-none dropdown-toggle user-box"
+                           href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="user-info">
+                                <strong>@nombre</strong><br />
+                                <small class="text-muted">@nivel</small>
+                            </div>
+                            <div class="user-avatar">@iniciales</div>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                            <li><h6 class="dropdown-header">Mi Cuenta</h6></li>
+                            <li><span class="dropdown-item dropdown-item-email">@correo</span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item dropdown-item-logout" asp-controller="Home" asp-action="CerrarSesion">Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="border-top footer text-muted mt-auto">
+        <div class="container">
+            &copy; 2025 - Viajes - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        sessionStorage.setItem("IdUsuario", "@ViewContext.HttpContext.Session.GetInt32("IdUsuario")");
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

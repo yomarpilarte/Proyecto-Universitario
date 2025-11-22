@@ -1,0 +1,40 @@
+﻿
+
+@* Vista parcial: ActualizarEstado.cshtml *@
+@using Viajes.Models.DTO
+
+
+<div class="modal fade" id="modalEstadoUsuario" tabindex="-1" aria-labelledby="estadoUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="GestionUsuarios" asp-action="CambiarEstado" method="post">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold" id="estadoUsuarioLabel">Actualizar Estado del Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="hidden" name="IdUsuario" />
+                    <div class="mb-3">
+                        <label class="form-label">Estado actual</label>
+                        <input type="text" class="form-control" name="EstadoActual" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nuevo estado</label>
+                        <select class="form-select" name="NuevoEstado" required>
+                            <option value="">-- Seleccionar --</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

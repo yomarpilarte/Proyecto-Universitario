@@ -1,0 +1,229 @@
+﻿@{
+    ViewData["Title"] = "Aprobación de Solicitudes";
+    var solicitudes = ViewBag.Solicitudes as List<dynamic> ?? new List<dynamic>();
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold text-primary">
+                <i class="bi bi-clipboard-check me-2"></i>Aprobación de Solicitudes
+            </h2>
+            <p class="text-muted">Revisa y aprueba las solicitudes de viaje pendientes</p>
+        </div>
+    </div>
+
+    @if (solicitudes.Count == 0)
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>No hay solicitudes pendientes de aprobación en este momento.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var solicitud in solicitudes)
+            {
+                <div class="col-12 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h5 class="card-title">@solicitud.Destino</h5>
+                                    <p class="text-muted mb-2">@solicitud.Motivo</p>
+                                    <div class="d-flex flex-wrap gap-3 mb-2">
+                                        <small class="text-muted">
+                                            <i class="bi bi-person me-1"></i><strong>Empleado:</strong> @solicitud.NombreEmpleado
+                                        </small>
+                                        <small class="text-muted">
+                                            <i class="bi bi-building me-1"></i><strong>Departamento:</strong> @solicitud.Departamento
+                                        </small>
+                                        <small class="text-muted">
+                                            <i class="bi bi-calendar-event me-1"></i><strong>Fecha Inicio:</strong> @solicitud.FechaInicioViaje
+                                        </small>
+                                        <small class="text-muted">
+                                            <i class="bi bi-calendar-check me-1"></i><strong>Fecha Fin:</strong> @solicitud.FechaFinViaje
+                                        </small>
+                                        <small class="text-muted">
+                                            <i class="bi bi-clock me-1"></i><strong>Enviado:</strong> @solicitud.FechaCreacion
+                                        </small>
+                                    </div>
+                                    <h4 class="text-primary mb-0">C$ @solicitud.PresupuestoEstimado.ToString("N2")</h4>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <span class="badge bg-warning text-dark mb-3" style="font-size: 1rem;">Pendiente</span>
+                                    <div>
+                                        <button class="btn btn-success btn-sm me-2 btn-aprobar"
+                                                data-id="@solicitud.IdSolicitudViaje"
+                                                data-destino="@solicitud.Destino">
+                                            <i class="bi bi-check-circle me-1"></i>Aprobar
+                                        </button>
+                                        <button class="btn btn-danger btn-sm btn-rechazar"
+                                                data-id="@solicitud.IdSolicitudViaje"
+                                                data-destino="@solicitud.Destino">
+                                            <i class="bi bi-x-circle me-1"></i>Rechazar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="modalRechazar" tabindex="-1" aria-labelledby="modalRechazarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="modalRechazarLabel">
+                    <i class="bi bi-x-circle me-2"></i>Rechazar Solicitud
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formRechazar">
+                <div class="modal-body">
+                    <p><strong>Solicitud:</strong> <span id="modalDestinoRechazar"></span></p>
+                    <input type="hidden" id="modalIdSolicitudRechazar" />
+                    <div class="mb-3">
+                        <label for="comentarioRechazo" class="form-label">Comentario de Justificación <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="comentarioRechazo" rows="4" required placeholder="Ingrese el motivo del rechazo..."></textarea>
+                        <small class="text-muted">El comentario es obligatorio para rechazar una solicitud.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-x-circle me-1"></i>Confirmar Rechazo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAprobar" tabindex="-1" aria-labelledby="modalAprobarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="modalAprobarLabel">
+                    <i class="bi bi-check-circle me-2"></i>Aprobar Solicitud
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formAprobar">
+                <div class="modal-body">
+                    <p><strong>Solicitud:</strong> <span id="modalDestinoAprobar"></span></p>
+                    <input type="hidden" id="modalIdSolicitudAprobar" />
+                    <div class="mb-3">
+                        <label for="comentarioAprobacion" class="form-label">Comentario (Opcional)</label>
+                        <textarea class="form-control" id="comentarioAprobacion" rows="4" placeholder="Comentarios adicionales..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle me-1"></i>Confirmar Aprobación
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.btn-rechazar').on('click', function () {
+                var idSolicitud = $(this).data('id');
+                var destino = $(this).data('destino');
+
+                $('#modalIdSolicitudRechazar').val(idSolicitud);
+                $('#modalDestinoRechazar').text(destino);
+                $('#comentarioRechazo').val('');
+                $('#modalRechazar').modal('show');
+            });
+
+            $('.btn-aprobar').on('click', function () {
+                var idSolicitud = $(this).data('id');
+                var destino = $(this).data('destino');
+
+                $('#modalIdSolicitudAprobar').val(idSolicitud);
+                $('#modalDestinoAprobar').text(destino);
+                $('#comentarioAprobacion').val('');
+                $('#modalAprobar').modal('show');
+            });
+
+            $('#formRechazar').on('submit', function (e) {
+                e.preventDefault();
+
+                var idSolicitud = parseInt($('#modalIdSolicitudRechazar').val());
+                var comentario = $('#comentarioRechazo').val().trim();
+
+                if (!comentario) {
+                    alert('Debe ingresar un comentario de justificación para el rechazo.');
+                    return;
+                }
+
+                var data = {
+                    IdSolicitudViaje: idSolicitud,
+                    IdEstadoDecision: 6,
+                    Comentarios: comentario
+                };
+
+                $.ajax({
+                    url: '@Url.Action("AprobarRechazarSolicitud", "GestionSolicitudes")',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            $('#modalRechazar').modal('hide');
+                            location.reload();
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Error al procesar la solicitud. Por favor, intente nuevamente.');
+                    }
+                });
+            });
+
+            $('#formAprobar').on('submit', function (e) {
+                e.preventDefault();
+
+                var idSolicitud = parseInt($('#modalIdSolicitudAprobar').val());
+                var comentario = $('#comentarioAprobacion').val().trim();
+
+                var data = {
+                    IdSolicitudViaje: idSolicitud,
+                    IdEstadoDecision: 5,
+                    Comentarios: comentario || ""
+                };
+
+                $.ajax({
+                    url: '@Url.Action("AprobarRechazarSolicitud", "GestionSolicitudes")',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            $('#modalAprobar').modal('hide');
+                            location.reload();
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Error al procesar la solicitud. Por favor, intente nuevamente.');
+                    }
+                });
+            });
+        });
+    </script>
+}

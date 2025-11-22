@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+    var tieneAprobadas = ViewBag.TieneSolicitudesAprobadas as bool? ?? false;
+    var cantidadAprobadas = ViewBag.CantidadAprobadas as int? ?? 0;
+}
+
+<h2>Página de Inicio</h2>
+<p>Bienvenido a la demo del sistema de gestión de gastos.</p>
+
+@if (tieneAprobadas)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">
+            <i class="bi bi-check-circle-fill me-2"></i>¡Tienes @(cantidadAprobadas) solicitud(es) aprobada(s)!
+        </h4>
+        <p class="mb-0">
+            Tu solicitud de viaje ha sido aprobada. Ahora puedes registrar tus gastos y subir los comprobantes correspondientes.
+        </p>
+        <hr>
+        <p class="mb-0">
+            <a asp-controller="GestionSolicitudes" asp-action="SolicitudesEmpleado" class="btn btn-success btn-sm">
+                <i class="bi bi-arrow-right me-1"></i>Ver mis solicitudes
+            </a>
+        </p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

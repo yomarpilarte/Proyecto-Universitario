@@ -1,0 +1,188 @@
+﻿@using Viajes.Models.DTO
+@model AuditoriaFiltroDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Auditoría";
+    var tablas = ViewBag.Tablas as List<string>;
+    var operaciones = ViewBag.Operaciones as List<string>;
+    var resultados = ViewBag.Resultados as List<AuditoriaDTO>;
+}
+
+<div class="container mt-4">
+    <h2 class="fw-bold">Auditoría del sistema</h2>
+    <p class="text-muted">Consulta los registros de acciones realizadas por los usuarios</p>
+
+    <!--  Filtros -->
+   @* <form asp-action="Auditoria" method="post" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label class="form-label">Fecha desde</label>
+            <input type="date" asp-for="FechaDesde" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Fecha hasta</label>
+            <input type="date" asp-for="FechaHasta" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Tabla</label>
+            <select asp-for="Nombre_Tabla" class="form-select">
+                <option value="">-- Todas --</option>
+                @foreach (var t in tablas)
+                {
+                    <option value="@t" selected="@(t == Model.Nombre_Tabla ? "selected" : null)">@t</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Tipo de operación</label>
+            <select asp-for="Tipo_Operacion" class="form-select">
+                <option value="">-- Todas --</option>
+                @foreach (var op in operaciones)
+                {
+                    <option value="@op" selected="@(op == Model.Tipo_Operacion ? "selected" : null)">@op</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">ID usuario que realiza acción</label>
+            <input type="number" asp-for="IdUsuarioAccion" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">ID usuario afectado</label>
+            <input type="number" asp-for="IdUsuarioAfectado" class="form-control" />
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-primary w-100">Consultar</button>
+        </div>
+    </form>
+    <!-- BOTÓN EXPORTAR PDF -->
+
+    <form asp-action="ExportarPDF" method="post" class="row g-3 mb-4">
+        <input type="hidden" asp-for="FechaDesde" />
+        <input type="hidden" asp-for="FechaHasta" />
+        <input type="hidden" asp-for="Nombre_Tabla" />
+        <input type="hidden" asp-for="Tipo_Operacion" />
+        <input type="hidden" asp-for="IdUsuarioAccion" />
+        <input type="hidden" asp-for="IdUsuarioAfectado" />
+
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-danger w-100">Exportar a PDF</button>
+        </div>
+    </form>*@
+
+    <!--  Filtros + acciones -->
+    <form asp-action="Auditoria" method="post" class="row g-3 mb-4">
+
+        <div class="col-md-3">
+            <label class="form-label">Fecha desde</label>
+            <input type="date" asp-for="FechaDesde" class="form-control" max="@DateTime.Now.ToString("yyyy-MM-dd")" min="@($"{ViewBag.AnoMin}-01-01")" />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Fecha hasta</label>
+            <input type="date" asp-for="FechaHasta" class="form-control" max="@DateTime.Now.ToString("yyyy-MM-dd")" min="@($"{ViewBag.AnoMin}-01-01")" />
+         
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Tabla</label>
+            <select asp-for="Nombre_Tabla" class="form-select">
+                <option value="">-- Todas --</option>
+                @foreach (var t in tablas)
+                {
+                    <option value="@t" selected="@(t == Model.Nombre_Tabla ? "selected" : null)">@t</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Tipo de operación</label>
+            <select asp-for="Tipo_Operacion" class="form-select">
+                <option value="">-- Todas --</option>
+                @foreach (var op in operaciones)
+                {
+                    <option value="@op" selected="@(op == Model.Tipo_Operacion ? "selected" : null)">@op</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">ID usuario que realiza acción</label>
+            <input type="number" asp-for="IdUsuarioAccion" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">ID usuario afectado</label>
+            <input type="number" asp-for="IdUsuarioAfectado" class="form-control" />
+        </div>
+
+        <!-- Botones -->
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-primary w-100" formaction="@Url.Action("Auditoria")">Consultar</button>
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-danger w-100" formaction="@Url.Action("ExportarPDF")">Exportar a PDF</button>
+        </div>
+    </form>
+
+
+
+    <!--  Resultados -->
+    @if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-warning">@ViewBag.Mensaje</div>
+    }
+
+    @if (resultados != null && resultados.Any())
+    {
+        <h4 class="fw-bold mb-3">Resultados de auditoría</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>ID Usuario</th>
+                        <th>ID Afectado</th>
+                        <th>Tabla</th>
+                        <th>Operación</th>
+                        <th>Descripción</th>
+                        <th>Datos anteriores</th>
+                        <th>Datos nuevos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in resultados)
+                    {
+                        <tr>
+                            <td>@a.Fecha_Accion.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@a.Id_Usuario</td>
+                            <td>@a.Id_Usuario_Afectado</td>
+                            <td>@a.Nombre_Tabla</td>
+                            <td><span class="badge bg-info text-dark">@a.Tipo_Operacion</span></td>
+                            <td>@a.Descripcion</td>
+                            <td><pre class="bg-light p-2 rounded">@a.Cambios_Anterior</pre></td>
+                            <td><pre class="bg-light p-2 rounded">@a.Cambios_Nuevo</pre></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">No se encontraron registros con los filtros seleccionados.</p>
+    }
+
+</div>
+
+@section Scripts {
+    <script>
+        window.onload = function () {
+            var error = '@ViewBag.Error';
+            if (error) {
+                alert("⚠️ " + error);
+            }
+        };
+    </script>
+}

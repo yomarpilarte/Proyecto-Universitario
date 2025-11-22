@@ -1,0 +1,238 @@
+@{
+    ViewData["Title"] = "Mis Solicitudes";
+    var solicitudes = ViewBag.Solicitudes as List<Viajes.Models.DTO.SolicitudDTO> ?? new List<Viajes.Models.DTO.SolicitudDTO>();
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold text-primary">
+                <i class="bi bi-file-earmark-text me-2"></i>Mis Solicitudes de Viaje
+            </h2>
+            <p class="text-muted">Crea y gestiona tus solicitudes de viaje</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">
+                <i class="bi bi-plus-circle me-2"></i>Nueva Solicitud
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Historial de Solicitudes</h5>
+                </div>
+                <div class="card-body">
+                    @if (solicitudes.Count == 0)
+                    {
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>No tienes solicitudes registradas. Crea tu primera solicitud haciendo clic en el botón "Nueva Solicitud".
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Destino</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Presupuesto</th>
+                                        <th>Estado</th>
+                                        <th>Fecha Creación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var solicitud in solicitudes)
+                                    {
+                                        var estadoClass = solicitud.IdEstado switch
+                                        {
+                                            3 => "warning",
+                                            4 => "info",
+                                            5 => "success",
+                                            6 => "danger",
+                                            _ => "secondary"
+                                        };
+                                        var estadoTexto = solicitud.IdEstado switch
+                                        {
+                                            3 => "Pendiente Gerente",
+                                            4 => "Pendiente Admin",
+                                            5 => "Aprobado",
+                                            6 => "Rechazado",
+                                            _ => "Desconocido"
+                                        };
+
+                                        <tr>
+                                            <td>@solicitud.IdSolicitudViaje</td>
+                                            <td>@solicitud.Destino</td>
+                                            <td>@solicitud.FechaInicioViaje.ToString("dd/MM/yyyy")</td>
+                                            <td>@solicitud.FechaFinViaje.ToString("dd/MM/yyyy")</td>
+                                            <td>C$ @solicitud.PresupuestoEstimado.ToString("N2")</td>
+                                            <td>
+                                                <span class="badge bg-@estadoClass">@estadoTexto</span>
+                                            </td>
+                                            <td>@solicitud.FechaCreacion.ToString("dd/MM/yyyy HH:mm")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalNuevaSolicitud" tabindex="-1" aria-labelledby="modalNuevaSolicitudLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="modalNuevaSolicitudLabel">
+                    <i class="bi bi-file-earmark-plus me-2"></i>Nueva Solicitud de Viaje
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formNuevaSolicitud">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="Destino" class="form-label">Destino <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Destino" name="Destino" required placeholder="Ej: Ciudad de Panamá, Panamá">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="FechaInicioViaje" class="form-label">Fecha de Inicio <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaInicioViaje" name="FechaInicioViaje" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="FechaFinViaje" class="form-label">Fecha de Fin <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="FechaFinViaje" name="FechaFinViaje" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="PresupuestoEstimado" class="form-label">Presupuesto Estimado (C$) <span class="text-danger">*</span></label>
+                            <input type="number" step="0.01" min="0.01" class="form-control" id="PresupuestoEstimado" name="PresupuestoEstimado" required placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="Motivo" class="form-label">Motivo del Viaje <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="Motivo" name="Motivo" rows="4" required placeholder="Describe el motivo del viaje..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check-circle me-2"></i>Crear Solicitud
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#formNuevaSolicitud').on('submit', function (e) {
+                e.preventDefault();
+
+                var fechaInicioStr = $('#FechaInicioViaje').val();
+                var fechaFinStr = $('#FechaFinViaje').val();
+                
+                // La fecha fin tiene que ser después de la inicio
+                if (fechaFinStr < fechaInicioStr) {
+                    alert('La fecha de fin debe ser posterior a la fecha de inicio.');
+                    return;
+                }
+
+                // No puede poner fechas pasadas
+                var hoy = new Date().toISOString().split('T')[0];
+                if (fechaInicioStr < hoy) {
+                    alert('La fecha de inicio no puede ser en el pasado.');
+                    return;
+                }
+
+                var destino = $('#Destino').val().trim();
+                var motivo = $('#Motivo').val().trim();
+                var presupuesto = parseFloat($('#PresupuestoEstimado').val());
+                var fechaInicio = $('#FechaInicioViaje').val();
+                var fechaFin = $('#FechaFinViaje').val();
+
+                if (!destino) {
+                    alert('El campo Destino es requerido.');
+                    $('#Destino').focus();
+                    return;
+                }
+
+                if (!motivo) {
+                    alert('El campo Motivo es requerido.');
+                    $('#Motivo').focus();
+                    return;
+                }
+
+                if (!presupuesto || presupuesto <= 0) {
+                    alert('El presupuesto estimado debe ser mayor a 0.');
+                    $('#PresupuestoEstimado').focus();
+                    return;
+                }
+
+                if (!fechaInicio) {
+                    alert('La fecha de inicio es requerida.');
+                    $('#FechaInicioViaje').focus();
+                    return;
+                }
+
+                if (!fechaFin) {
+                    alert('La fecha de fin es requerida.');
+                    $('#FechaFinViaje').focus();
+                    return;
+                }
+
+                var formData = {
+                    Destino: destino,
+                    Motivo: motivo,
+                    FechaInicioViaje: fechaInicio,
+                    FechaFinViaje: fechaFin,
+                    PresupuestoEstimado: presupuesto
+                };
+
+                $.ajax({
+                    url: '@Url.Action("CrearSolicitud", "GestionSolicitudes")',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(formData),
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            $('#modalNuevaSolicitud').modal('hide');
+                            $('#formNuevaSolicitud')[0].reset();
+                            location.reload();
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Error al procesar la solicitud. Por favor, intente nuevamente.');
+                    }
+                });
+            });
+
+            // Ponemos la fecha mínima como hoy para que no pueda elegir fechas pasadas
+            var hoy = new Date().toISOString().split('T')[0];
+            $('#FechaInicioViaje').attr('min', hoy);
+            $('#FechaFinViaje').attr('min', hoy);
+        });
+    </script>
+}
+

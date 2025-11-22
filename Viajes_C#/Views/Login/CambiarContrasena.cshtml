@@ -1,0 +1,163 @@
+﻿@{
+    TempData.Keep("UsuarioId");
+    TempData.Keep("Usuario");
+}
+
+@{
+    Layout = null;
+}
+
+
+
+
+<style>
+    body {
+        background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contenedor {
+        max-width: 500px;
+        margin: 60px auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #2e7d32;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #2e7d32;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+    font-weight: bold;
+
+    #mensajeUsuario {
+        margin-top: 10px;
+        color: red;
+        text-align: center;
+    }
+</style>
+
+<div class="contenedor">
+
+@{
+    ViewBag.Title = "Cambiar contraseña";
+    var usuario = TempData["Usuario"]?.ToString() ?? "";
+}
+
+<h2>Cambiar contraseña</h2>
+
+<form method="post">
+    <label>Nueva contraseña:</label>
+    <input type="password" name="nuevaContrasena" id="nuevaContrasena" required maxlength="20" />
+        <input type="hidden" name="usuario" value="@usuario" />
+    <button type="submit" id="btnActualizar" disabled>Actualizar</button>
+</form>
+
+<h4>Requisitos de la contraseña:</h4>
+<ul>
+    <li><input type="checkbox" id="chkLongitud" disabled /> Entre 8 y 20 caracteres</li>
+    <li><input type="checkbox" id="chkMinuscula" disabled /> Al menos una letra minúscula</li>
+    <li><input type="checkbox" id="chkMayuscula" disabled /> Al menos una letra MAYÚSCULA</li>
+    <li><input type="checkbox" id="chkNumero" disabled /> Al menos un número</li>
+    <li><input type="checkbox" id="chkEspecial" disabled /> Al menos un carácter especial</li>
+    <li><input type="checkbox" id="chkDistintoUsuario" disabled /> No debe contener el nombre de usuario</li>
+</ul>
+
+<div id="mensajeUsuario" style="color:red; font-weight:bold;"></div>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-info">@ViewBag.Mensaje</div>
+}
+
+<script>
+
+        const input = document.getElementById("nuevaContrasena");
+        const usuario = "@usuario".replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+        const btn = document.getElementById("btnActualizar");
+        const mensajeUsuario = document.getElementById("mensajeUsuario");
+
+        input.addEventListener("input", function () {
+            const valor = input.value;
+            const normalizado = valor.toLowerCase();
+
+            const longitud = valor.length >= 8 && valor.length <= 20;
+            const minuscula = /[a-z]/.test(valor);
+            const mayuscula = /[A-Z]/.test(valor);
+            const numero = /[0-9]/.test(valor);
+            const especial = /[^a-zA-Z0-9]/.test(valor);
+            const distintoUsuario = usuario.length > 0 ? !normalizado.includes(usuario) : true;
+
+           
+
+            document.getElementById("chkLongitud").checked = longitud;
+            document.getElementById("chkMinuscula").checked = minuscula;
+            document.getElementById("chkMayuscula").checked = mayuscula;
+            document.getElementById("chkNumero").checked = numero;
+            document.getElementById("chkEspecial").checked = especial;
+            document.getElementById("chkDistintoUsuario").checked = distintoUsuario;
+
+        if (!longitud) {
+            mensajeUsuario.textContent = "La contraseña debe tener entre 8 y 20 caracteres.";
+        } else if (!minuscula) {
+            mensajeUsuario.textContent = "Debe contener al menos una letra minúscula.";
+        } else if (!mayuscula) {
+            mensajeUsuario.textContent = "Debe contener al menos una letra MAYÚSCULA.";
+        } else if (!numero) {
+            mensajeUsuario.textContent = "Debe contener al menos un número.";
+        } else if (!especial) {
+            mensajeUsuario.textContent = "Debe contener al menos un carácter especial.";
+        } else if (!distintoUsuario) {
+            mensajeUsuario.textContent = `La contraseña no puede contener tu nombre de usuario (${usuario}).`;
+        } else {
+            mensajeUsuario.textContent = "";
+        }
+
+
+            btn.disabled = !(longitud && minuscula && mayuscula && numero && especial && distintoUsuario);
+        });
+
+  
+</script>
+</div>
