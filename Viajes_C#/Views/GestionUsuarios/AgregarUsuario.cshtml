@@ -3,17 +3,27 @@
 <div class="modal fade" id="modalAgregarUsuario" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-                <form asp-controller="GestionUsuarios" asp-action="Crear" method="post">
+            <form id="formCrearUsuario" asp-controller="GestionUsuarios" asp-action="Crear" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Agregar Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
+
                 <div class="modal-body">
-                    @*Aquí va el formulario con UsuarioInsertarDTO *@
+
+                    <div id="alertaErrorUsuario" class="alert alert-danger alert-dismissible fade show" style="display:none;">
+                        <span id="textoErrorUsuario"></span>
+                        <button type="button" class="btn-close" onclick="$('#alertaErrorUsuario').hide()"></button>
+                    </div>
+
                     @Html.Partial("FormularioUsuario", new UsuarioDTO())
                 </div>
+
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="btnGuardarUsuario">
+                        <span class="spinner-border spinner-border-sm d-none" id="spinnerGuardar" role="status" aria-hidden="true"></span>
+                        <span id="txtGuardar">Guardar</span>
+                    </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>

@@ -4,7 +4,8 @@ GO
 INSERT INTO tbl_estados (Nombre_Estado, Fecha_Creacion, Fecha_Modificacion, Activo) VALUES
 ('Activo', GETDATE(), GETDATE(),1),
 ('Inactivo', GETDATE(), GETDATE(),1),
-('Pendiente', GETDATE(), GETDATE(),1),
+('En Validacion', GETDATE(), GETDATE(),1),
+('En Autorización', GETDATE(), GETDATE(),1),
 ('Aprobado', GETDATE(), GETDATE(),1),
 ('Rechazado', GETDATE(), GETDATE(),1);
 

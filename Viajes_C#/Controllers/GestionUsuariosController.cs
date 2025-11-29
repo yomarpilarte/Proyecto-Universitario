@@ -65,7 +65,7 @@ namespace Viajes.Controllers
             return View("GestionUsuarios", usuarios);
         }
 
-       
+
         [HttpPost]
         public IActionResult Crear(UsuarioDTO dto)
         {
@@ -74,37 +74,39 @@ namespace Viajes.Controllers
             if (resultado.resultado == 1)
             {
                 TempData["Mensaje"] = resultado.mensaje;
-                return RedirectToAction("GestionUsuarios");
+                return Json(new { success = true });
             }
-
-            // ? Error: mostrar mensaje en la misma vista
-            ModelState.AddModelError(string.Empty, resultado.mensaje);
-            ViewBag.EsEdicion = false;
-            return View("FormularioUsuario", dto);
+            else
+            {
+                // ERROR (Duplicado, Falta campo, etc.): el mensaje del SP
+                return Json(new { success = false, message = resultado.mensaje });
+            }
         }
+
         [HttpPost]
         public IActionResult Editar(UsuarioDTO dto)
         {
+
             dto.IdUsuarioModificador = HttpContext.Session.GetInt32("IdUsuario") ?? 0;
 
             if (dto.IdUsuario <= 0)
             {
-                ModelState.AddModelError(string.Empty, "Usuario inválido para actualizar.");
-                ViewBag.EsEdicion = true;
-                return View("FormularioUsuario", dto);
+                return Json(new { success = false, message = "Error: Identificador de usuario no válido." });
             }
-
+            
             var (resultado, mensaje) = Usuario.ActualizarDatosUsuario(dto);
 
             if (resultado == 1)
             {
-                TempData["Mensaje"] = mensaje;
-                return RedirectToAction("GestionUsuarios");
-            }
 
-            ModelState.AddModelError(string.Empty, mensaje);
-            ViewBag.EsEdicion = true;
-            return View("FormularioUsuario", dto);
+                TempData["Mensaje"] = mensaje;
+                return Json(new { success = true });
+            }
+            else
+            {
+                // ERROR (Ej: Correo ya existe en otro usuario)
+                return Json(new { success = false, message = mensaje });
+            }
         }
 
 

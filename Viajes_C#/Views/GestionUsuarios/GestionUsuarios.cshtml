@@ -163,6 +163,119 @@
 
 @section Scripts {
     <script>
+        // ==========================================
+        // 1. LÓGICA: CREAR USUARIO (Validación BD)
+        // ==========================================
+        $(document).ready(function () {
+            $('#formCrearUsuario').on('submit', function (e) {
+                // Si el navegador detecta campos "required" vacíos en HTML,
+                // ni siquiera entra aquí. Si pasa HTML, entra aquí:
+                e.preventDefault();
+
+                var form = $(this);
+                var url = form.attr('action');
+                var data = form.serialize();
+                var btn = $('#btnGuardarUsuario');
+                var spinner = $('#spinnerGuardar');
+                var txt = $('#txtGuardar');
+
+                // UI: Bloquear botón y mostrar carga
+                btn.prop('disabled', true);
+                spinner.removeClass('d-none');
+                txt.text(' Validando...');
+                $('#alertaErrorUsuario').hide();
+
+                $.post(url, data)
+                    .done(function (response) {
+                        if (response.success) {
+                            // ÉXITO: Recargar página
+                            location.reload();
+                        } else {
+                            // ERROR DEL SP (Ej: Duplicado): Mostrar en el modal
+                            $('#textoErrorUsuario').html(response.message);
+                            $('#alertaErrorUsuario').fadeIn();
+
+                            // Restaurar botón
+                            btn.prop('disabled', false);
+                            spinner.addClass('d-none');
+                            txt.text('Guardar');
+                        }
+                    })
+                    .fail(function () {
+                        $('#textoErrorUsuario').text("Error de comunicación con el servidor.");
+                        $('#alertaErrorUsuario').fadeIn();
+                        btn.prop('disabled', false);
+                        spinner.addClass('d-none');
+                        txt.text('Guardar');
+                    });
+            });
+
+            // Limpiar formulario al cerrar
+            $('#modalAgregarUsuario').on('hidden.bs.modal', function () {
+                $('#formCrearUsuario')[0].reset();
+                $('#alertaErrorUsuario').hide();
+                // Limpiar clases de validación de Bootstrap si existen
+                $(this).find('.is-invalid').removeClass('is-invalid');
+            });
+        });
+
+                function editarUsuario(idUsuario) {
+            // Limpiar errores previos
+            $('#alertaErrorEditar').hide();
+
+            $.get('/GestionUsuarios/ObtenerUsuario', { idUsuario: idUsuario }, function (data) {
+                // Inyectamos el formulario dentro del cuerpo del modal
+                $('#contenidoFormularioEditar').html(data);
+                $('#modalEditarUsuario').modal('show');
+            }).fail(function () {
+                alert('Error al cargar datos del usuario');
+            });
+        }
+
+        // 2. Interceptar el SUBMIT de Editar (NUEVO)
+        // Usamos $(document).on porque el modal existe, pero el contenido puede cambiar
+        $(document).on('submit', '#formEditarUsuario', function (e) {
+            e.preventDefault(); // Detener recarga
+
+            var form = $(this);
+            var url = form.attr('action');
+            var data = form.serialize();
+
+            var btn = $('#btnEditarGuardar');
+            var spinner = $('#spinnerEditar');
+            var txt = $('#txtEditar');
+
+            // UI: Bloquear
+            btn.prop('disabled', true);
+            spinner.removeClass('d-none');
+            txt.text(' Validando...');
+            $('#alertaErrorEditar').hide();
+
+            $.post(url, data)
+                .done(function (response) {
+                    if (response.success) {
+                        // ÉXITO: Recargar
+                        location.reload();
+                    } else {
+                        // ERROR: Mostrar mensaje rojo SIN cerrar modal
+                        $('#textoErrorEditar').html(response.message);
+                        $('#alertaErrorEditar').fadeIn();
+
+                        // Restaurar UI
+                        btn.prop('disabled', false);
+                        spinner.addClass('d-none');
+                        txt.text('Guardar Cambios');
+                    }
+                })
+                .fail(function () {
+                    $('#textoErrorEditar').text("Error de comunicación con el servidor.");
+                    $('#alertaErrorEditar').fadeIn();
+                    btn.prop('disabled', false);
+                    spinner.addClass('d-none');
+                    txt.text('Guardar Cambios');
+                });
+        });
+
         // Cargar datos en el modal al abrir
         const modalEstado = document.getElementById('modalEstadoUsuario');
         modalEstado.addEventListener('show.bs.modal', function (event) {

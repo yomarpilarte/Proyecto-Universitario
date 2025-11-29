@@ -17,93 +17,93 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Viajes
 build_property.RootNamespace = Viajes
-build_property.ProjectDir = C:\Users\Usuario\Desktop\Implementacion de proyectos\Avance foro 2\Viajes_C#\
+build_property.ProjectDir = C:\Users\usuar\Documents\GitHub\Proyecto-Universitario\Viajes_C#\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Usuario\Desktop\Implementacion de proyectos\Avance foro 2\Viajes_C#
+build_property.MSBuildProjectDirectory = C:\Users\usuar\Documents\GitHub\Proyecto-Universitario\Viajes_C#
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Auditoria/Auditoria.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Auditoria/Auditoria.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXEF1ZGl0b3JpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Gastos/Gastos.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Gastos/Gastos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FzdG9zXEdhc3Rvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionSolicitudes/AprobacionAdmin.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionSolicitudes/AprobacionAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblNvbGljaXR1ZGVzXEFwcm9iYWNpb25BZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionSolicitudes/RevisionSolicitudes.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionSolicitudes/RevisionSolicitudes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblNvbGljaXR1ZGVzXFJldmlzaW9uU29saWNpdHVkZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionSolicitudes/SolicitudesEmpleado.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionSolicitudes/SolicitudesEmpleado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblNvbGljaXR1ZGVzXFNvbGljaXR1ZGVzRW1wbGVhZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionUsuarios/ActualizarEstado.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionUsuarios/ActualizarEstado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblVzdWFyaW9zXEFjdHVhbGl6YXJFc3RhZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionUsuarios/AgregarUsuario.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionUsuarios/AgregarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblVzdWFyaW9zXEFncmVnYXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionUsuarios/EditarUsuario.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionUsuarios/EditarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblVzdWFyaW9zXEVkaXRhclVzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionUsuarios/FormularioUsuario.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionUsuarios/FormularioUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblVzdWFyaW9zXEZvcm11bGFyaW9Vc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/GestionUsuarios/GestionUsuarios.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/GestionUsuarios/GestionUsuarios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblVzdWFyaW9zXEdlc3Rpb25Vc3Vhcmlvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Home/Index.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Home/Privacy.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Login/CambiarContrasena.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Login/CambiarContrasena.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQ2FtYmlhckNvbnRyYXNlbmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Login/Login.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Reportes/Reportes.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Reportes/Reportes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Shared/Error.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/_ViewImports.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/_ViewStart.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Usuario/Desktop/Implementacion de proyectos/Avance foro 2/Viajes_C\#/Views/Shared/_Layout.cshtml]
+[C:/Users/usuar/Documents/GitHub/Proyecto-Universitario/Viajes_C\#/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1jontbkupy
