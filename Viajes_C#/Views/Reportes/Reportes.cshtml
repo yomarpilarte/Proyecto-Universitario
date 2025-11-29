@@ -1,107 +1,129 @@
 ﻿@model List<Viajes.Models.DTO.UsuarioDetalleDTO>
 
 @{
-    // Lista de opciones de estado
+    ViewData["Title"] = "Reportes";
     var opcionesEstado = new List<(string Texto, string Valor)>
     {
-        ("Todos", ""),
-        ("Activo", "1"),
-        ("Inactivo", "0")
+        ("Todos", ""), ("Activo", "1"), ("Inactivo", "0")
     };
-
     int estadoSeleccionado = ViewBag.Estado != null ? (int)ViewBag.Estado : -1;
 }
 
-<h2>Reporte de Usuarios</h2>
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4">Reporte de Usuarios</h2>
 
-<!-- FORMULARIO DE FILTRO -->
-<form method="post" asp-action="Reportes">
-    <div class="row">
+    <form method="post" asp-action="Reportes" class="card p-4 shadow-sm">
+        <div class="row g-3">
 
-        <div class="col-md-3">
-            <label>Fecha Inicio</label>
-            <input type="date" name="fechaInicio" class="form-control"  max="@DateTime.Now.ToString("yyyy-MM-dd")" min="@($"{ViewBag.AnoMin}-01-01")" />
+            <div class="col-md-3">
+                <label class="fw-bold">Fecha Inicio</label>
+                <input type="date" name="fechaInicio"
+                       class="form-control bloquear-escritura"
+                       value="@ViewBag.FechaInicio"
+                       max="@DateTime.Now.ToString("yyyy-MM-dd")"
+                       min="@($"{ViewBag.AnoMin}-01-01")"
+                       style="cursor: pointer; caret-color: transparent;" />
+            </div>
+
+            <div class="col-md-3">
+                <label class="fw-bold">Fecha Fin</label>
+                <input type="date" name="fechaFin"
+                       class="form-control bloquear-escritura"
+                       value="@ViewBag.FechaFin"
+                       max="@DateTime.Now.ToString("yyyy-MM-dd")"
+                       min="@($"{ViewBag.AnoMin}-01-01")"
+                       style="cursor: pointer; caret-color: transparent;" />
+            </div>
+
+            <div class="col-md-3">
+                <label class="fw-bold">Estado</label>
+                <select class="form-select" name="estado">
+                    @foreach (var opcion in opcionesEstado)
+                    {
+                        var isSelected = (opcion.Valor == "" && estadoSeleccionado == -1) ||
+                        (opcion.Valor == "1" && estadoSeleccionado == 1) ||
+                        (opcion.Valor == "0" && estadoSeleccionado == 0);
+                        <option value="@opcion.Valor" selected="@(isSelected ? "selected" : null)">
+                            @opcion.Texto
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
         </div>
+    </form>
 
-        <div class="col-md-3">
-            <label>Fecha Fin</label>
-            <input type="date" name="fechaFin" class="form-control" max="@DateTime.Now.ToString("yyyy-MM-dd")" min="@($"{ViewBag.AnoMin}-01-01")" />
-        </div>
+    <hr class="my-4" />
 
-        <div class="col-md-3">
-            <label>Estado</label>
-            <select class="form-control" name="estado">
-                @foreach (var opcion in opcionesEstado)
+    <form method="post" asp-action="ExportarPDF" class="mb-3">
+        <input type="hidden" name="fechaInicio" value="@ViewBag.FechaInicio" />
+        <input type="hidden" name="fechaFin" value="@ViewBag.FechaFin" />
+        <input type="hidden" name="estado" value="@ViewBag.Estado" />
+        <button type="submit" class="btn btn-danger">Exportar a PDF</button>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Cédula</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Departamento</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
                 {
-                    var isSelected = (opcion.Valor == "" && estadoSeleccionado == -1) ||
-                    (opcion.Valor == "1" && estadoSeleccionado == 1) ||
-                    (opcion.Valor == "0" && estadoSeleccionado == 0);
-
-                    <option value="@opcion.Valor" selected="@(isSelected ? "selected" : null)">
-                        @opcion.Texto
-                    </option>
+                    foreach (var u in Model)
+                    {
+                        <tr>
+                            <td>@u.PrimerNombre @u.SegundoNombre</td>
+                            <td>@u.PrimerApellido @u.SegundoApellido</td>
+                            <td>@u.Cedula</td>
+                            <td>@u.Correo</td>
+                            <td>@u.Telefono</td>
+                            <td>@u.Direccion</td>
+                            <td>@u.Departamento</td>
+                            <td>@u.Rol</td>
+                        </tr>
+                    }
                 }
-            </select>
-        </div>
-
-        <div class="col-md-3 mt-4">
-            <button type="submit" class="btn btn-primary">Filtrar</button>
-        </div>
-
+                else
+                {
+                    <tr><td colspan="8" class="text-center text-muted">No hay datos</td></tr>
+                }
+            </tbody>
+        </table>
     </div>
-</form>
-
-<hr />
-<!-- BOTÓN EXPORTAR PDF -->
-<form method="post" asp-action="ExportarPDF">
-    <input type="hidden" name="fechaInicio" value="@ViewBag.FechaInicio" />
-    <input type="hidden" name="fechaFin" value="@ViewBag.FechaFin" />
-    <input type="hidden" name="estado" value="@ViewBag.Estado" />
-
-    <button type="submit" class="btn btn-danger mb-3">Exportar a PDF</button>
-</form>
-
-<!-- TABLA DE RESULTADOS -->
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Cédula</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
-            <th>Dirección</th>
-            <th>Departamento</th>
-            <th>Rol</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var u in Model)
-        {
-            <tr>
-                <td>@u.PrimerNombre @u.SegundoNombre</td>
-                <td>@u.PrimerApellido @u.SegundoApellido</td>
-                <td>@u.Cedula</td>
-                <td>@u.Correo</td>
-                <td>@u.Telefono</td>
-                <td>@u.Direccion</td>
-                <td>@u.Departamento</td>
-                <td>@u.Rol</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
+</div>
 
 @section Scripts {
     <script>
+        // Mostrar alerta de error si viene del Controller
         window.onload = function () {
-            var error = '@ViewBag.Error';
-            if (error) {
-                alert("⚠️ " + error);
-            }
+            var error = '@Html.Raw(ViewBag.Error)';
+            if (error) alert("⚠️ " + error);
         };
+
+        // Bloquear escritura manual en fechas
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputs = document.querySelectorAll('.bloquear-escritura');
+            inputs.forEach(input => {
+                // Bloquear teclado (excepto Tab)
+                input.addEventListener('keydown', e => { if(e.key !== 'Tab') e.preventDefault(); });
+                // Bloquear pegado
+                input.addEventListener('paste', e => e.preventDefault());
+                // Abrir calendario al hacer click
+                input.addEventListener('click', function() { try { this.showPicker(); } catch(e){} });
+            });
+        });
     </script>
 }
-
-

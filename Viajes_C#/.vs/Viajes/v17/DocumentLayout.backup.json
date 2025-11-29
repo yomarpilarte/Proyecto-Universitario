@@ -3,6 +3,98 @@
   "WorkspaceRootPath": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\reportes\\reportes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\reportes\\reportes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\formulariousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\formulariousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\controllers\\auditoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:controllers\\auditoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\auditoria\\auditoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\auditoria\\auditoria.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\usuariodetalledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\usuariodetalledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\solicituddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\solicituddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\solicitudcreardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\solicitudcreardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\decisionaprobaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\decisionaprobaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\logica\\solicitud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:logica\\solicitud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\logica\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:logica\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\logica\\auditoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:logica\\auditoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\controllers\\gestionsolicitudescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:controllers\\gestionsolicitudescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\controllers\\gastoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:controllers\\gastoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\gestionusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\gestionusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionsolicitudes\\solicitudesempleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionsolicitudes\\solicitudesempleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\controllers\\gestionusuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:controllers\\gestionusuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,20 +107,8 @@
       "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\agregarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\gestionusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\gestionusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\formulariousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:views\\gestionusuarios\\formulariousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\views\\gestionusuarios\\actualizarestado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -41,14 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\usuarioestadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\usuarioestadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\models\\dto\\usuariodetalledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:models\\dto\\usuariodetalledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|c:\\users\\usuar\\documents\\github\\proyecto-universitario\\viajes_c#\\logica\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22EACB76-713D-482B-B423-E4BE012B922D}|Viajes.csproj|solutionrelative:logica\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,141 +130,169 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EditarUsuario.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\EditarUsuario.cshtml",
-              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\EditarUsuario.cshtml",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\EditarUsuario.cshtml",
-              "RelativeToolTip": "Views\\GestionUsuarios\\EditarUsuario.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAGAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T02:05:13.967Z",
+              "WhenOpened": "2025-11-29T04:02:38.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Auditoria.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Auditoria\\Auditoria.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auditoria\\Auditoria.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Auditoria\\Auditoria.cshtml",
+              "RelativeToolTip": "Views\\Auditoria\\Auditoria.cshtml",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAgwLsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T03:59:46.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Reportes.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Reportes\\Reportes.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reportes\\Reportes.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Reportes\\Reportes.cshtml",
+              "RelativeToolTip": "Views\\Reportes\\Reportes.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T03:18:42.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AgregarUsuario.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\AgregarUsuario.cshtml",
-              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\AgregarUsuario.cshtml",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\AgregarUsuario.cshtml",
-              "RelativeToolTip": "Views\\GestionUsuarios\\AgregarUsuario.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T02:05:00.487Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioDTO.cs",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioDTO.cs",
-              "RelativeDocumentMoniker": "Models\\DTO\\UsuarioDTO.cs",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioDTO.cs",
-              "RelativeToolTip": "Models\\DTO\\UsuarioDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T02:02:19.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GestionUsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GestionUsuariosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\GestionUsuariosController.cs",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GestionUsuariosController.cs",
-              "RelativeToolTip": "Controllers\\GestionUsuariosController.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAmwGQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T02:01:30.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GestionUsuarios.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\GestionUsuarios.cshtml",
-              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\GestionUsuarios.cshtml",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\GestionUsuarios.cshtml",
-              "RelativeToolTip": "Views\\GestionUsuarios\\GestionUsuarios.cshtml",
-              "ViewState": "AgIAAOAAAAAAAAAAAAAgwBUBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T02:05:37.712Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAB1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-29T02:17:17.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "FormularioUsuario.cshtml",
               "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\FormularioUsuario.cshtml",
               "RelativeDocumentMoniker": "Views\\GestionUsuarios\\FormularioUsuario.cshtml",
               "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\FormularioUsuario.cshtml",
               "RelativeToolTip": "Views\\GestionUsuarios\\FormularioUsuario.cshtml",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAgwKoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAgwKoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T02:05:25.006Z",
+              "WhenOpened": "2025-11-29T02:05:25.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportesController.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\ReportesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReportesController.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\ReportesController.cs",
+              "RelativeToolTip": "Controllers\\ReportesController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwEYAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:34:22.944Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ActualizarEstado.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\ActualizarEstado.cshtml",
-              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\ActualizarEstado.cshtml",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\ActualizarEstado.cshtml",
-              "RelativeToolTip": "Views\\GestionUsuarios\\ActualizarEstado.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T02:04:45.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T04:02:44.016Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "UsuarioFiltroDTO.cs",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioFiltroDTO.cs",
-              "RelativeDocumentMoniker": "Models\\DTO\\UsuarioFiltroDTO.cs",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioFiltroDTO.cs",
-              "RelativeToolTip": "Models\\DTO\\UsuarioFiltroDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T02:03:18.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T03:59:43.007Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UsuarioEstadoDTO.cs",
-              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioEstadoDTO.cs",
-              "RelativeDocumentMoniker": "Models\\DTO\\UsuarioEstadoDTO.cs",
-              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioEstadoDTO.cs",
-              "RelativeToolTip": "Models\\DTO\\UsuarioEstadoDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T02:03:09.444Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T03:57:58.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuditoriaController.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\AuditoriaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuditoriaController.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\AuditoriaController.cs",
+              "RelativeToolTip": "Controllers\\AuditoriaController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:34:26.909Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "SolicitudDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\SolicitudDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\SolicitudDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\SolicitudDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\SolicitudDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:59:03.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SolicitudCrearDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\SolicitudCrearDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\SolicitudCrearDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\SolicitudCrearDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\SolicitudCrearDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:58:55.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\LoginDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\LoginDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:58:54.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DecisionAprobacionDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\DecisionAprobacionDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\DecisionAprobacionDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\DecisionAprobacionDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\DecisionAprobacionDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:58:47.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "UsuarioDetalleDTO.cs",
               "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioDetalleDTO.cs",
               "RelativeDocumentMoniker": "Models\\DTO\\UsuarioDetalleDTO.cs",
@@ -200,12 +300,47 @@
               "RelativeToolTip": "Models\\DTO\\UsuarioDetalleDTO.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAA3wB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T02:02:08.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T02:02:08.701Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
+              "Title": "Solicitud.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Logica\\Solicitud.cs",
+              "RelativeDocumentMoniker": "Logica\\Solicitud.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Logica\\Solicitud.cs",
+              "RelativeToolTip": "Logica\\Solicitud.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:58:43.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GestionSolicitudesController.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GestionSolicitudesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GestionSolicitudesController.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GestionSolicitudesController.cs",
+              "RelativeToolTip": "Controllers\\GestionSolicitudesController.cs",
+              "ViewState": "AgIAAFIBAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:34:47.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Auditoria.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Logica\\Auditoria.cs",
+              "RelativeDocumentMoniker": "Logica\\Auditoria.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Logica\\Auditoria.cs",
+              "RelativeToolTip": "Logica\\Auditoria.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAgwMsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:18:00.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Logica\\Usuario.cs",
               "RelativeDocumentMoniker": "Logica\\Usuario.cs",
@@ -213,8 +348,151 @@
               "RelativeToolTip": "Logica\\Usuario.cs",
               "ViewState": "AgIAAHIBAAAAAAAAAAAgwJoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T02:01:46.239Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-29T02:01:46.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GastosController.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GastosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GastosController.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GastosController.cs",
+              "RelativeToolTip": "Controllers\\GastosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T03:34:44.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T03:18:59.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EditarUsuario.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\EditarUsuario.cshtml",
+              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\EditarUsuario.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\EditarUsuario.cshtml",
+              "RelativeToolTip": "Views\\GestionUsuarios\\EditarUsuario.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T02:05:13.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GestionUsuarios.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\GestionUsuarios.cshtml",
+              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\GestionUsuarios.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\GestionUsuarios.cshtml",
+              "RelativeToolTip": "Views\\GestionUsuarios\\GestionUsuarios.cshtml",
+              "ViewState": "AgIAABYBAAAAAAAAAAAgwC4BAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T02:05:37.712Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "SolicitudesEmpleado.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionSolicitudes\\SolicitudesEmpleado.cshtml",
+              "RelativeDocumentMoniker": "Views\\GestionSolicitudes\\SolicitudesEmpleado.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionSolicitudes\\SolicitudesEmpleado.cshtml",
+              "RelativeToolTip": "Views\\GestionSolicitudes\\SolicitudesEmpleado.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T03:18:30.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AgregarUsuario.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\AgregarUsuario.cshtml",
+              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\AgregarUsuario.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\AgregarUsuario.cshtml",
+              "RelativeToolTip": "Views\\GestionUsuarios\\AgregarUsuario.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T02:05:00.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UsuarioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\UsuarioDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\UsuarioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T02:02:19.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GestionUsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GestionUsuariosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GestionUsuariosController.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Controllers\\GestionUsuariosController.cs",
+              "RelativeToolTip": "Controllers\\GestionUsuariosController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAmwGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T02:01:30.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-29T02:17:17.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ActualizarEstado.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\ActualizarEstado.cshtml",
+              "RelativeDocumentMoniker": "Views\\GestionUsuarios\\ActualizarEstado.cshtml",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Views\\GestionUsuarios\\ActualizarEstado.cshtml",
+              "RelativeToolTip": "Views\\GestionUsuarios\\ActualizarEstado.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T02:04:45.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UsuarioFiltroDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioFiltroDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\UsuarioFiltroDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioFiltroDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\UsuarioFiltroDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T02:03:18.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UsuarioEstadoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioEstadoDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\UsuarioEstadoDTO.cs",
+              "ToolTip": "C:\\Users\\usuar\\Documents\\GitHub\\Proyecto-Universitario\\Viajes_C#\\Models\\DTO\\UsuarioEstadoDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\UsuarioEstadoDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T02:03:09.444Z"
             }
           ]
         }
