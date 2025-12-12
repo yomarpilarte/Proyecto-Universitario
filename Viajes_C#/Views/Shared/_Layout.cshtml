@@ -62,10 +62,6 @@
                             </li>
                         }
 
-                        @* Gastos: todos los roles *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Gastos" asp-action="Gastos">Gastos</a>
-                        </li>
 
                         @* Aprobación Solicitudes Admin: solo Administrador *@
                         @if (nivel == "Administrador")
@@ -79,7 +75,7 @@
                         @if (nivel == "Administrador")
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Reportes" asp-action="Reportes">Reportes</a>
+                                <a class="nav-link text-dark" asp-controller="Reportes" asp-action="Index">Reportes</a>
                             </li>
                         }
 

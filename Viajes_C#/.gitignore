@@ -1,0 +1,48 @@
+# Archivos y carpetas de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Carpetas de compilación
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+# Archivos de configuración local
+*.dbmdl
+*.log
+*.cache
+*.pdb
+*.pidb
+*.svclog
+
+# Archivos de publicación
+*.Publish.xml
+
+# Archivos de paquetes NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.psmdcp
+
+# Archivos de SQL Server Management Studio
+*.sqlproj
+*.mdf
+*.ldf
+
+# Scripts SQL
+DatabaseScripts/
+*.sql
+
+# Archivos temporales
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Archivos de configuración de usuario
+*.config.user

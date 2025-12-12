@@ -80,13 +80,13 @@ namespace Viajes.Controllers
                 return Json(new { success = false, message = "Debe seleccionar una solicitud válida." });
             }
 
-            if (dto.IdEstadoDecision != 5 && dto.IdEstadoDecision != 6)
+            if (dto.IdEstadoDecision != 4 && dto.IdEstadoDecision != 5)
             {
-                return Json(new { success = false, message = "La decisión debe ser Aprobar (5) o Rechazar (6)." });
+                return Json(new { success = false, message = "La decisión debe ser Aprobar (4) o Rechazar (5)." });
             }
 
             // Si rechaza, tiene que poner un comentario explicando por qué
-            if (dto.IdEstadoDecision == 6 && string.IsNullOrWhiteSpace(dto.Comentarios))
+            if (dto.IdEstadoDecision == 5 && string.IsNullOrWhiteSpace(dto.Comentarios))
             {
                 return Json(new { success = false, message = "Debe ingresar un comentario de justificación para el rechazo." });
             }
@@ -163,10 +163,30 @@ namespace Viajes.Controllers
         }
 
         [HttpGet]
-        public IActionResult GenerarSolicitudes()
+        public IActionResult SolicitudesEmpleado()
         {
+            int? idEmpleado = HttpContext.Session.GetInt32("IdUsuario");
+            if (!idEmpleado.HasValue)
+            {
+                ViewBag.Solicitudes = new List<SolicitudDTO>();
+                return View();
+            }
+
+            // Traemos todas las solicitudes del empleado (estado = 0 = todos)
+            var filtro = new SolicitudDTO
+            {
+                IdEmpleado = idEmpleado.Value,
+                IdEstado = 0
+            };
+
+            var resultado = Solicitud.FiltrarPorEstado(filtro);
+
+            ViewBag.Solicitudes = resultado.Solicitudes;
             return View();
         }
+
+   
+
 
         [HttpGet]
         public IActionResult AprobacionAdmin()
@@ -228,13 +248,13 @@ namespace Viajes.Controllers
                 return Json(new { success = false, message = "Debe seleccionar una solicitud válida." });
             }
 
-            if (dto.IdEstadoDecision != 5 && dto.IdEstadoDecision != 6)
+            if (dto.IdEstadoDecision != 4 && dto.IdEstadoDecision != 5)
             {
-                return Json(new { success = false, message = "La decisión debe ser Aprobar (5) o Rechazar (6)." });
+                return Json(new { success = false, message = "La decisión debe ser Aprobar (4) o Rechazar (5)." });
             }
 
             // Si rechaza, tiene que explicar por qué
-            if (dto.IdEstadoDecision == 6 && string.IsNullOrWhiteSpace(dto.Comentarios))
+            if (dto.IdEstadoDecision == 5 && string.IsNullOrWhiteSpace(dto.Comentarios))
             {
                 return Json(new { success = false, message = "Debe ingresar un comentario de justificación para el rechazo." });
             }
@@ -254,29 +274,7 @@ namespace Viajes.Controllers
             }
         }
 
-        // Métodos para empleados
-
-        [HttpGet]
-        public IActionResult SolicitudesEmpleado()
-        {
-            int? idEmpleado = HttpContext.Session.GetInt32("IdUsuario");
-            string nivel = HttpContext.Session.GetString("nivel") ?? "";
-
-            if (nivel != "Empleado")
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            if (!idEmpleado.HasValue)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-
-            var solicitudes = Solicitud.ListarSolicitudesPorEmpleado(idEmpleado.Value);
-            ViewBag.Solicitudes = solicitudes;
-
-            return View();
-        }
+        
 
         [HttpPost]
         public IActionResult CrearSolicitud([FromBody] SolicitudCrearDTO dto)
@@ -288,16 +286,7 @@ namespace Viajes.Controllers
 
             int? idEmpleado = HttpContext.Session.GetInt32("IdUsuario");
             string nivel = HttpContext.Session.GetString("nivel") ?? "";
-
-            if (nivel != "Empleado")
-            {
-                return Json(new { success = false, message = "No tiene permisos para realizar esta acción." });
-            }
-
-            if (!idEmpleado.HasValue)
-            {
-                return Json(new { success = false, message = "Sesión no válida. Por favor, inicie sesión nuevamente." });
-            }
+         
 
             // Buscamos el departamento del empleado automáticamente
             int idDepartamento = Solicitud.ObtenerDepartamentoEmpleado(idEmpleado.Value);
@@ -316,11 +305,6 @@ namespace Viajes.Controllers
             if (string.IsNullOrWhiteSpace(dto.Motivo))
             {
                 return Json(new { success = false, message = "El motivo es requerido." });
-            }
-
-            if (dto.PresupuestoEstimado <= 0)
-            {
-                return Json(new { success = false, message = "El presupuesto estimado debe ser mayor a 0." });
             }
 
             // Convertimos las fechas que vienen como string
@@ -348,35 +332,91 @@ namespace Viajes.Controllers
                 Motivo = dto.Motivo,
                 FechaInicioViaje = fechaInicio,
                 FechaFinViaje = fechaFin,
-                PresupuestoEstimado = dto.PresupuestoEstimado
+                
             };
 
             var resultado = Solicitud.AgregarSolicitud(solicitudDTO);
 
             if (resultado.resultado > 0)
             {
-                return Json(new { success = true, message = resultado.mensaje });
+
+                return Json(new { success = true, message = resultado.mensaje, idSolicitud = resultado.resultado });
             }
             else
             {
                 return Json(new { success = false, message = resultado.mensaje });
             }
+
         }
 
         [HttpGet]
         public IActionResult ObtenerSolicitudesEmpleado()
         {
-            int? idEmpleado = HttpContext.Session.GetInt32("IdUsuario");
-            string nivel = HttpContext.Session.GetString("nivel") ?? "";
+            int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
 
-            if (nivel != "Empleado" || !idEmpleado.HasValue)
+            // Validamos que haya sesión activa
+            if (!idUsuario.HasValue)
             {
                 return Json(new { success = false, data = new List<SolicitudDTO>() });
             }
 
-            var solicitudes = Solicitud.ListarSolicitudesPorEmpleado(idEmpleado.Value);
+            // Listamos las solicitudes del usuario autenticado
+            var solicitudes = Solicitud.ListarSolicitudesPorEmpleado(idUsuario.Value);
+
             return Json(new { success = true, data = solicitudes });
         }
+
+        [HttpGet]
+
+        public IActionResult ObtenerSolicitudesPorEstado(string estado)
+        {
+            int? idEmpleado = HttpContext.Session.GetInt32("IdUsuario");
+            if (!idEmpleado.HasValue)
+                return Json(new { success = false, message = "Sesión no válida." });
+
+            int idEstado = EstadoHelper.MapearEstado(estado);
+
+            var filtro = new SolicitudDTO
+            {
+                IdEmpleado = idEmpleado.Value,
+                IdEstado = idEstado
+            };
+
+            var resultado = Solicitud.FiltrarPorEstado(filtro);
+
+            if (resultado.Num == 0 && resultado.Solicitudes.Count == 0)
+            {
+                // No hay solicitudes, pero todo funcionó bien
+                return Json(new { success = true, data = new List<object>() });
+            }
+
+            if (resultado.Num == 0 && resultado.Solicitudes.Count > 0)
+            {
+                // Hay solicitudes, proyectamos solo lo necesario
+                var listaJson = resultado.Solicitudes.Select(s => new
+                {
+                    s.IdSolicitudViaje,
+                    s.Destino,
+                    FechaInicioViaje = s.FechaInicioViajeStr,
+                    FechaFinViaje = s.FechaFinViajeStr,
+                    FechaCreacion = s.FechaCreacionStr,
+                    PresupuestoEstimado = s.PresupuestoEstimado,
+                    s.IdEstado,
+                    s.EstadoNombre
+                }).ToList();
+
+                return Json(new { success = true, data = listaJson });
+            }
+
+            // Algo falló en el SP
+            return Json(new { success = false, message = resultado.Msg });
+        }
+
+        
+
+
+
+
 
     }
 }

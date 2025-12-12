@@ -1,0 +1,90 @@
+﻿@model Viajes.Models.DTO.ReporteSolictudDTO
+
+@{
+    ViewData["Title"] = "Reporte Solicitud de Viaje";
+}
+
+<h2>Reporte Solicitud #@Model.IdSolicitudViaje</h2>
+
+<!-- Botón Exportar PDF -->
+<div class="mb-3">
+    <a class="btn btn-danger" href="@Url.Action("ExportarPDFSolicitud", "Reportes", new { id = Model.IdSolicitudViaje })">
+        Exportar a PDF
+    </a>
+</div>
+
+<!-- 🟦 Datos generales -->
+<table class="table table-bordered">
+    <thead><tr><th colspan="2">Datos de la Solicitud</th></tr></thead>
+    <tbody>
+        <tr><td>Empleado</td><td>@Model.NombreEmpleado</td></tr>
+        <tr><td>Departamento</td><td>@Model.Departamento</td></tr>
+        <tr><td>Motivo</td><td>@Model.Motivo</td></tr>
+        <tr><td>Destino</td><td>@Model.Destino</td></tr>
+        <tr><td>Fecha Inicio</td><td>@Model.FechaInicioViaje.ToShortDateString()</td></tr>
+        <tr><td>Fecha Fin</td><td>@Model.FechaFinViaje.ToShortDateString()</td></tr>
+        <tr><td>Presupuesto Estimado</td><td>@Model.PresupuestoEstimado.ToString("C")</td></tr>
+    </tbody>
+</table>
+
+<!-- 🟨 Gastos estimados -->
+<h4>Gastos Estimados</h4>
+<table class="table table-striped">
+    <thead><tr><th>Tipo</th><th>Descripción</th><th>Monto</th></tr></thead>
+    <tbody>
+        @foreach (var gasto in Model.GastosEstimados)
+        {
+            <tr>
+                <td>@gasto.TipoGasto</td>
+                <td>@gasto.Descripcion</td>
+                <td>@gasto.Monto.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- 🟩 Gastos reales -->
+<h4>Gastos Reales</h4>
+<table class="table table-striped">
+    <thead><tr><th>Tipo</th><th>Descripción</th><th>Monto Real</th><th>Retorno</th></tr></thead>
+    <tbody>
+        @foreach (var gasto in Model.GastosReales)
+        {
+            <tr>
+                <td>@gasto.TipoGasto</td>
+                <td>@gasto.Descripcion</td>
+                <td>@gasto.MontoReal.ToString("C")</td>
+                <td>@(gasto.Retorno.HasValue? gasto.Retorno.Value.ToString("C") : "-")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- 🟥 Comparación -->
+<h4>Comparación de Gastos</h4>
+<table class="table table-bordered">
+    <thead><tr><th>Reembolso</th><th>Exceso</th><th>Justificación</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>@(Model.ComparacionGasto?.Reembolso?.ToString("C") ?? "-")</td>
+            <td>@(Model.ComparacionGasto?.ExcesoGasto?.ToString("C") ?? "-")</td>
+            <td>@Model.ComparacionGasto?.JustificacionExceso ?? "-"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Flujo de Aprobaciones</h4>
+<table class="table table-striped">
+    <thead><tr><th>Autorizador</th><th>Nivel</th><th>Estado</th><th>Comentario</th></tr></thead>
+    <tbody>
+        @foreach (var aprobacion in Model.ComparacionGasto?.Aprobaciones ?? new List<Viajes.Models.DTO.AprobacionDTO>())
+        {
+            <tr>
+                <td>@aprobacion.IdAutorizador</td>
+                <td>@(aprobacion.NivelAprobacion == 1 ? "Supervisor" : "Administrador")</td>
+                <td>@aprobacion.EstadoDecision</td>
+                <td>@aprobacion.Comentario</td>
+            </tr>
+        }
+    </tbody>
+</table>

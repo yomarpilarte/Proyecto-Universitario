@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Avance foro 2\\Viajes_C#\\Viajes.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Proyecto Final\\Viajes_C#\\Viajes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Avance foro 2\\Viajes_C#\\Viajes.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Proyecto Final\\Viajes_C#\\Viajes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Avance foro 2\\Viajes_C#\\Viajes.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Proyecto Final\\Viajes_C#\\Viajes.csproj",
         "projectName": "Viajes",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Avance foro 2\\Viajes_C#\\Viajes.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Proyecto Final\\Viajes_C#\\Viajes.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Avance foro 2\\Viajes_C#\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\Implementacion de proyectos\\Proyecto Final\\Viajes_C#\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

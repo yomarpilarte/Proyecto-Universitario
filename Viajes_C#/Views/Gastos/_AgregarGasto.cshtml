@@ -1,0 +1,41 @@
+﻿
+
+
+<div class="modal fade" id="modalAgregarGasto" tabindex="-1" aria-labelledby="modalAgregarGastoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formAgregarGasto">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAgregarGastoLabel">Agregar Gasto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tipoGasto" class="form-label">Tipo de Gasto</label>
+                        <select class="form-select" id="tipoGasto" name="IdTipoGasto" required>
+                            <option value="">Cargando tipos de gasto...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionGasto" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="descripcionGasto" name="Descripcion_Gasto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="montoGasto" class="form-label">Monto</label>
+                        <input type="number" class="form-control" id="montoGasto" name="Monto_Gasto" min="0.01" step="0.01" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnRegresarSolicitud">
+                        <i class="bi bi-arrow-left-circle me-2"></i>Regresar
+                    </button>
+                    <button type="submit" class="btn btn-success" id="btnGuardarGasto">
+                        <i class="bi bi-save me-2"></i>Guardar Gasto
+                    </button>
+                </div>
+                <input type="hidden" id="IdSolicitudViajeHidden" name="IdSolicitudViaje" value="0" />
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Centro de Reportes";
+}
+
+<h2 class="mb-4">Centro de Reportes</h2>
+<p class="lead">Seleccione el tipo de reporte que desea generar:</p>
+
+<div class="row">
+    <!-- Tarjeta Reporte de Usuarios -->
+    <div class="col-md-6 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">Reporte de Usuarios</h4>
+                <p class="card-text">
+                    Genera un reporte detallado de los usuarios registrados en el sistema.
+                </p>
+                <a href="@Url.Action("Reportes", "Reportes")" class="btn btn-primary">
+                    Ir a Reporte de Usuarios
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta Reporte de Solicitudes de Viaje -->
+    <div class="col-md-6 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">Reporte de Solicitudes de Viaje</h4>
+                <p class="card-text">
+                    Genera un reporte detallado de las solicitudes de viaje con filtros y exportación a PDF.
+                </p>
+                <a href="@Url.Action("FiltroSolicitud", "Reportes")" class="btn btn-success">
+                    Ir a Reporte de Solicitudes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,13 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Inicio";
-    var tieneAprobadas = ViewBag.TieneSolicitudesAprobadas as bool? ?? false;
-    var cantidadAprobadas = ViewBag.CantidadAprobadas as int? ?? 0;
+   // var tieneAprobadas = ViewBag.TieneSolicitudesAprobadas as bool? ?? false;
+    //var cantidadAprobadas = ViewBag.CantidadAprobadas as int? ?? 0;
 }
 
 <h2>Página de Inicio</h2>
 <p>Bienvenido a la demo del sistema de gestión de gastos.</p>
 
-@if (tieneAprobadas)
+@*@if (tieneAprobadas)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <h4 class="alert-heading">
@@ -24,4 +24,4 @@
         </p>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-}
+}*@

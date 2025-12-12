@@ -1,0 +1,363 @@
+﻿@{
+    ViewData["Title"] = "Justificación de Gastos";
+    var idSolicitud = ViewBag.IdSolicitud; // se pasa desde el controlador
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold text-primary">
+                <i class="bi bi-cash-stack me-2"></i>Justificación de Gastos
+            </h2>
+            <p class="text-muted">Solicitud #@idSolicitud</p>
+        </div>
+    </div>
+
+    <!-- Campo oculto con el Id de la solicitud -->
+    <input type="hidden" id="IdSolicitudViajeHidden" value="@ViewBag.IdSolicitud" />
+ 
+
+
+    <!-- Lista de gastos supuestos y reales -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white">
+            <h5 class="mb-0">Gastos Supuestos</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tipo de Gasto</th>
+                            <th>Descripción Supuesto</th>
+                            <th>Monto Supuesto</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyGastos">
+                        <!-- Aquí se renderizarán los gastos supuestos y reales -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campo de retorno -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label for="montoRetorno" class="form-label">Retorno (si se devuelve todo el dinero)</label>
+                <div class="input-group">
+                    <input type="number" step="0.01" class="form-control" id="montoRetorno" />
+                    <button class="btn btn-outline-secondary" id="btnGuardarRetorno">Guardar Retorno</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campo de justificación de exceso (oculto por defecto) -->
+    <div class="row mb-4" id="divExceso" style="display:none;">
+        <div class="col-md-8">
+            <label for="txtJustificacionExceso" class="form-label">Justificación de exceso de gastos</label>
+            <textarea class="form-control" id="txtJustificacionExceso" rows="3"></textarea>
+        </div>
+    </div>
+
+    <!-- Botones principales -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-start gap-2">
+                <button class="btn btn-success" id="btnJustificarSolicitud">
+                    <i class="bi bi-check-circle me-2"></i>Justificar Solicitud
+                </button>
+                <button class="btn btn-secondary ms-2" id="btnRegresarSolicitudes">
+                    <i class="bi bi-arrow-left-circle me-2"></i>Regresar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para justificar gasto -->
+<div class="modal fade" id="modalGastoReal" tabindex="-1" aria-labelledby="modalGastoRealLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formGastoReal" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Justificar Gasto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="idGastoSupuesto" />
+
+                    <div class="mb-3">
+                        <label for="tipoGastoReal" class="form-label">Tipo de Gasto</label>
+                        <select class="form-select" id="tipoGastoReal"></select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcionGastoReal" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="descripcionGastoReal" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="montoGastoReal" class="form-label">Monto</label>
+                        <input type="number" step="0.01" class="form-control" id="montoGastoReal" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="archivoComprobante" class="form-label">Comprobante</label>
+                        <input type="file" class="form-control" id="archivoComprobante" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar Gasto</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Estilos adicionales -->
+<style>
+    .table td, .table th {
+        vertical-align: middle;
+    }
+
+    .modal .form-label {
+        font-weight: 500;
+    }
+
+    .modal .form-control {
+        border-radius: 0.375rem;
+    }
+</style>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // --- CARGAR SUPUESTOS ---
+            function cargarSupuestos(idSolicitud) {
+                $.getJSON('/Gastos/ListarSupuestos', { idSolicitud }, function (res) {
+                    if (!res.success) { alert('Error al cargar supuestos'); return; }
+                    const tbody = $('#tbodyGastos'); tbody.empty();
+
+                           res.data.forEach(s => {
+            const fila = `
+              <tr id="supuesto-${s.id_Gasto_Viaje}">
+                <td>${s.tipoGasto}</td>
+                <td>${s.descripcionSupuesto}</td>
+                <td>$${parseFloat(s.montoSupuesto).toFixed(2)}</td>
+                <td>
+                  <button class="btn btn-sm btn-primary btnJustificar"
+                data-id="${s.id_Gasto_Viaje}"
+                data-tipo="${s.id_Tipo_Gasto}">
+          Justificar gasto
+        </button>
+                 
+                </td>
+              </tr>`;
+            tbody.append(fila);
+        });
+
+
+                    // después de cargar supuestos, cargamos los reales
+                    cargarReales(idSolicitud);
+                });
+            }
+
+            // --- CARGAR REALES ---
+    
+                    function cargarReales(idSolicitud) {
+            $.getJSON('/Gastos/ListarReales', { idSolicitud }, function (res) {
+                if (!res.success) { alert('Error al cargar reales'); return; }
+
+                res.data.forEach(r => {
+                    const filaReal = `
+                      <tr>
+                        <td colspan="4">
+                          <div class="border rounded p-2 bg-light">
+                            <b>Tipo de gasto:</b> ${r.tipoGasto} <br />
+                            <b>Gasto real:</b> $${parseFloat(r.montoReal).toFixed(2)} <br />
+                            <b>Descripción:</b> ${r.descripcionReal} <br />
+                            <b>Comprobante:</b> ${r.rutaComprobante ? `<a href="${r.rutaComprobante}" target="_blank">Ver</a>` : 'No disponible'}
+                          </div>
+                        </td>
+                      </tr>`;
+                    $(`#supuesto-${r.idGastoSupuesto}`).after(filaReal);
+                });
+            });
+        }
+
+
+            // --- ABRIR MODAL PARA JUSTIFICAR ---
+                    $(document).on('click', '.btnJustificar', function () {
+            const idGasto = $(this).data('id');
+            const tipoGastoSupuesto = $(this).data('tipo'); // capturamos el tipo del supuesto
+            $('#idGastoSupuesto').val(idGasto);
+
+            $.getJSON('/Gastos/ObtenerTiposGasto', { idSolicitud: $('#IdSolicitudViajeHidden').val() }, function (data) {
+                var select = $('#tipoGastoReal');
+                select.empty();
+
+                data.forEach(function (item) {
+                    const selected = item.value == tipoGastoSupuesto ? 'selected' : '';
+                    select.append(`<option value="${item.value}" ${selected}>${item.text}</option>`);
+                });
+
+                // Opcional: bloquear el select para que no se cambie
+                select.prop('disabled', true);
+            });
+
+            $('#modalGastoReal').modal('show');
+        });
+
+                // --- GUARDAR GASTO REAL ---
+        $('#formGastoReal').on('submit', function (e) {
+            e.preventDefault();
+
+            const dto = {
+                IdSolicitudViaje: parseInt($('#IdSolicitudViajeHidden').val()),
+                IdGastoSupuesto: parseInt($('#idGastoSupuesto').val()),
+                IdTipoGasto: parseInt($('#tipoGastoReal').val()),
+                DescripcionReal: $('#descripcionGastoReal').val(),
+                MontoReal: parseFloat($('#montoGastoReal').val())
+            };
+
+            const archivo = $('#archivoComprobante')[0].files[0];
+            if (!archivo) {
+                alert('Debe adjuntar comprobante');
+                return;
+            }
+
+            // Validación frontend (10MB y extensiones)
+            const maxSize = 10 * 1024 * 1024;
+            const allowedExtensions = ['.pdf', '.jpg', '.jpeg', '.png'];
+            const extension = archivo.name.substring(archivo.name.lastIndexOf('.')).toLowerCase();
+
+            if (archivo.size > maxSize) {
+                alert('El archivo excede el tamaño máximo de 10MB');
+                return;
+            }
+            if (!allowedExtensions.includes(extension)) {
+                alert('Solo se permiten archivos PDF, JPG , JPEG o PNG');
+                return;
+            }
+
+            // Subir comprobante primero
+            const formData = new FormData();
+            formData.append('archivo', archivo);
+
+            $.ajax({
+                url: '/Gastos/SubirComprobante',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (up) {
+                    if (!up.success) {
+                        alert(up.message);
+                        return;
+                    }
+
+                    // Agregar ruta al DTO
+                    dto.RutaComprobante = up.path;
+
+                    // Insertar gasto real
+                    $.ajax({
+                        url: '/Gastos/InsertarGastoReal',
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(dto),
+                        success: function (res) {
+                            if (res.success) {
+                                alert(res.message);
+                                $('#modalGastoReal').modal('hide');
+                                cargarSupuestos(dto.IdSolicitudViaje); // refrescar tabla
+                            } else {
+                                alert(res.message);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+
+
+            // --- GUARDAR RETORNO ---
+
+                 $('#btnGuardarRetorno').on('click', function () {
+            const idSolicitud = parseInt($('#IdSolicitudViajeHidden').val());
+            const monto = parseFloat($('#montoRetorno').val());
+
+            if (isNaN(monto) || monto <= 0) {
+                alert('Monto inválido');
+                return;
+            }
+
+            $.ajax({
+                url: '/Gastos/GuardarRetorno',
+                type: 'POST',
+                data: { idSolicitud, monto },
+                success: function (res) {
+                    alert(res.message);
+                    if (res.success) {
+                        // refrescar la vista para que se muestre el retorno
+                        cargarSupuestos(idSolicitud);
+                    }
+                }
+            });
+        });
+
+
+            // --- JUSTIFICAR SOLICITUD ---
+                   $('#btnJustificarSolicitud').on('click', function () {
+            const idSolicitud = parseInt($('#IdSolicitudViajeHidden').val());
+            console.log('ID leído desde el campo oculto:', idSolicitud);
+            const justificacion = $('#txtJustificacionExceso').val();
+
+            $.ajax({
+                url: '/Gastos/JustificarSolicitud',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ idSolicitud: idSolicitud, justificacionExceso: justificacion }),
+                success: function (res) {
+                    if (!res.success && res.requiereJustificacion) {
+                        // Caso: exceso sin justificación → mostrar campo oculto
+                        $('#divExceso').show();
+                        alert(res.message);
+                    } else if (res.success) {
+                        // Caso: solicitud cerrada con éxito → redirigir
+                        alert(res.message);
+                        window.location.href = '/GestionSolicitudes/SolicitudesEmpleado';
+                    } else {
+                        // Caso: error interno u otro
+                        alert(res.message);
+                    }
+                }
+            });
+        });
+
+               
+
+
+            // --- REGRESAR A SOLICITUDES ---
+            $('#btnRegresarSolicitudes').on('click', function () {
+                const idSolicitud = parseInt($('#IdSolicitudViajeHidden').val());
+                $.getJSON('/Gastos/VerificarGastos', { idSolicitud }, function (res) {
+                    if (res.tieneGastos) {
+                        alert('No puede regresar: ya existen gastos reales registrados');
+                    } else {
+                        window.location.href = '/GestionSolicitudes/SolicitudesEmpleado';
+                    }
+                });
+            });
+
+            // --- INICIALIZAR ---
+            cargarSupuestos($('#IdSolicitudViajeHidden').val());
+        });
+    </script>
+}
+

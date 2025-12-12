@@ -18,53 +18,75 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevaSolicitud">
                 <i class="bi bi-plus-circle me-2"></i>Nueva Solicitud
             </button>
+            <button type="button" class="btn btn-warning ms-2" id="btnAgregarGasto" style="display:none;">
+                <i class="bi bi-plus-circle me-2"></i>Agregar Gasto
+            </button>
+            <!-- Campo oculto para guardar el ID de la solicitud pendiente -->
+            <input type="hidden" id="IdSolicitudViajeHidden"
+                   value="@solicitudes.FirstOrDefault(s => s.IdEstado == 3)?.IdSolicitudViaje" />
+
+        
+
         </div>
     </div>
+
     <div class="row">
         <div class="col-12">
+            <ul class="nav nav-tabs mb-3" id="estadoTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-estado="todos" href="#">Todos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-estado="pendiente" href="#">Pendientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-estado="aprobado" href="#">Aprobados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-estado="rechazado" href="#">Rechazados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-estado="cerrada" href="#">Cerradas</a>
+                </li>
+            </ul>
+
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <h5 class="mb-0">Historial de Solicitudes</h5>
                 </div>
                 <div class="card-body">
-                    @if (solicitudes.Count == 0)
-                    {
-                        <div class="alert alert-info">
-                            <i class="bi bi-info-circle me-2"></i>No tienes solicitudes registradas. Crea tu primera solicitud haciendo clic en el botón "Nueva Solicitud".
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Destino</th>
-                                        <th>Fecha Inicio</th>
-                                        <th>Fecha Fin</th>
-                                        <th>Presupuesto</th>
-                                        <th>Estado</th>
-                                        <th>Fecha Creación</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var solicitud in solicitudes)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Destino</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin</th>
+                                    <th>Presupuesto</th>
+                                    <th>Estado</th>
+                                    <th>Fecha Creación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (solicitudes.Count > 0)
+                                {
+                                    foreach (var solicitud in solicitudes)
                                     {
                                         var estadoClass = solicitud.IdEstado switch
                                         {
-                                            3 => "warning",
-                                            4 => "info",
-                                            5 => "success",
-                                            6 => "danger",
+                                            3 => "warning",   // Pendiente
+                                            4 => "success",   // Aprobado
+                                            5 => "danger",    // Rechazado
+                                            6 => "secondary", // Cerrada
                                             _ => "secondary"
                                         };
                                         var estadoTexto = solicitud.IdEstado switch
                                         {
-                                            3 => "Pendiente Gerente",
-                                            4 => "Pendiente Admin",
-                                            5 => "Aprobado",
-                                            6 => "Rechazado",
+                                            3 => "Pendiente",
+                                            4 => "Aprobado",
+                                            5 => "Rechazado",
+                                            6 => "Cerrada",
                                             _ => "Desconocido"
                                         };
 
@@ -73,22 +95,39 @@
                                             <td>@solicitud.Destino</td>
                                             <td>@solicitud.FechaInicioViaje.ToString("dd/MM/yyyy")</td>
                                             <td>@solicitud.FechaFinViaje.ToString("dd/MM/yyyy")</td>
-                                            <td>C$ @solicitud.PresupuestoEstimado.ToString("N2")</td>
+                                            <td>@solicitud.PresupuestoEstimado.ToString("C")</td>
                                             <td>
                                                 <span class="badge bg-@estadoClass">@estadoTexto</span>
+                                                @if (solicitud.IdEstado == 4)
+                                                {
+                                                    <div class="mt-2">
+                                                        <button class="btn btn-outline-primary btnJustificar" data-id="@solicitud.IdSolicitudViaje">
+                                                            Justificar gastos
+                                                        </button>
+                                                    </div>
+                                                }
                                             </td>
                                             <td>@solicitud.FechaCreacion.ToString("dd/MM/yyyy HH:mm")</td>
                                         </tr>
                                     }
-                                </tbody>
-                            </table>
-                        </div>
-                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted">
+                                            No tienes solicitudes registradas.
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" id="modalNuevaSolicitud" tabindex="-1" aria-labelledby="modalNuevaSolicitudLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -116,13 +155,7 @@
                             <label for="FechaFinViaje" class="form-label">Fecha de Fin <span class="text-danger">*</span></label>
                             <input type="date" class="form-control" id="FechaFinViaje" name="FechaFinViaje" required>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="PresupuestoEstimado" class="form-label">Presupuesto Estimado (C$) <span class="text-danger">*</span></label>
-                            <input type="number" step="0.01" min="0.01" class="form-control" id="PresupuestoEstimado" name="PresupuestoEstimado" required placeholder="0.00">
-                        </div>
-                    </div>
+                    </div> 
                     <div class="row">
                         <div class="col-12 mb-3">
                             <label for="Motivo" class="form-label">Motivo del Viaje <span class="text-danger">*</span></label>
@@ -135,28 +168,129 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-check-circle me-2"></i>Crear Solicitud
                     </button>
+                   
+
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+@Html.Partial("~/Views/Gastos/_AgregarGasto.cshtml")
+
+
+
+
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#formNuevaSolicitud').on('submit', function (e) {
+            var modalSolicitud = new bootstrap.Modal(document.getElementById("modalNuevaSolicitud"));
+            var modalGasto = new bootstrap.Modal(document.getElementById("modalAgregarGasto"));
+
+            // --- FILTRAR SOLICITUDES POR ESTADO ---
+                           function cargarSolicitudesPorEstado(estado) {
+            $.getJSON('/GestionSolicitudes/ObtenerSolicitudesPorEstado', { estado: estado }, function (response) {
+                var tbody = $('.card-body table tbody');
+                tbody.empty();
+
+                console.log("Respuesta completa del backend:", response);
+
+                if (response.success && Array.isArray(response.data) && response.data.length > 0) {
+                    response.data.forEach(function (sol, index) {
+                        //Depuración: ver cada objeto recibido
+                        console.log("Solicitud #" + index, sol);
+
+                        let estadoClass = "secondary";
+                        let estadoTexto = sol.estadoNombre ?? "Desconocido";
+
+                        switch (sol.idEstado) {
+                            case 3: estadoClass = "warning"; break;
+                            case 4: estadoClass = "success"; break;
+                            case 5: estadoClass = "danger"; break;
+                            case 6: estadoClass = "secondary"; break;
+                            case 7: estadoClass = "secondary"; break;
+                        }
+
+                        let fila = `
+                            <tr>
+                                <td>${sol.idSolicitudViaje ?? ''}</td>
+                                <td>${sol.destino ?? ''}</td>
+                                <td>${sol.fechaInicioViaje ?? ''}</td>
+                                <td>${sol.fechaFinViaje ?? ''}</td>
+                                <td>${sol.presupuestoEstimado ? parseFloat(sol.presupuestoEstimado).toLocaleString('es-NI', { style: 'currency', currency: 'NIO' }) : 'C$0.00'}</td>
+                                <td>
+                                    <span class="badge bg-${estadoClass}">${estadoTexto}</span>
+                                    ${sol.idEstado === 4 ? `
+                                        <div class="mt-2">
+                                            <button class="btn btn-outline-primary btnJustificar" data-id="${sol.idSolicitudViaje}">
+                                                Justificar gastos
+                                            </button>
+                                        </div>` : ''}
+                                </td>
+                                <td>${sol.fechaCreacion ?? ''}</td>
+                            </tr>`;
+
+                        //Depuración: ver la fila generada
+                        console.log("Fila generada:", fila);
+
+                        // Insertar en la tabla
+                        tbody.append(fila);
+                    });
+                } else if (response.success && Array.isArray(response.data) && response.data.length === 0) {
+                    console.log("No hay solicitudes para este estado");
+                    tbody.html(`
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">
+                                No tienes solicitudes registradas con este estado.
+                            </td>
+                        </tr>
+                    `);
+                } else {
+                    alert(response.message);
+                }
+            });
+            }
+                    // --- Mostrar botón Agregar Gasto si hay solicitudes pendientes
+        function verificarSolicitudesPendientes() {
+            $.getJSON('/GestionSolicitudes/ObtenerSolicitudesPorEstado', { estado: 'pendiente' }, function (response) {
+                if (response.success && Array.isArray(response.data) && response.data.length > 0) {
+                    $('#btnAgregarGasto').show();
+                }
+            });
+        }
+
+        // Llamar al cargar la página
+        verificarSolicitudesPendientes();
+
+
+
+            // --- MANEJO DE PESTAÑAS ---
+            $('#estadoTabs .nav-link').on('click', function (e) {
+                e.preventDefault();
+                $('#estadoTabs .nav-link').removeClass('active');
+                $(this).addClass('active');
+                let estado = $(this).data('estado');
+                console.log("Pestaña clickeada:", estado); //Depuración
+                cargarSolicitudesPorEstado(estado);
+            });
+
+            // --- REDIRECCIÓN AL JUSTIFICAR GASTOS ---
+            $(document).on('click', '.btnJustificar', function () {
+                let idSolicitud = $(this).data('id');
+                window.location.href = `/Gastos/JustificarGastos?idSolicitud=${idSolicitud}`;
+            });
+
+                  $('#formNuevaSolicitud').on('submit', function (e) {
                 e.preventDefault();
 
                 var fechaInicioStr = $('#FechaInicioViaje').val();
                 var fechaFinStr = $('#FechaFinViaje').val();
-                
-                // La fecha fin tiene que ser después de la inicio
+
                 if (fechaFinStr < fechaInicioStr) {
                     alert('La fecha de fin debe ser posterior a la fecha de inicio.');
                     return;
                 }
 
-                // No puede poner fechas pasadas
                 var hoy = new Date().toISOString().split('T')[0];
                 if (fechaInicioStr < hoy) {
                     alert('La fecha de inicio no puede ser en el pasado.');
@@ -165,9 +299,6 @@
 
                 var destino = $('#Destino').val().trim();
                 var motivo = $('#Motivo').val().trim();
-                var presupuesto = parseFloat($('#PresupuestoEstimado').val());
-                var fechaInicio = $('#FechaInicioViaje').val();
-                var fechaFin = $('#FechaFinViaje').val();
 
                 if (!destino) {
                     alert('El campo Destino es requerido.');
@@ -181,30 +312,11 @@
                     return;
                 }
 
-                if (!presupuesto || presupuesto <= 0) {
-                    alert('El presupuesto estimado debe ser mayor a 0.');
-                    $('#PresupuestoEstimado').focus();
-                    return;
-                }
-
-                if (!fechaInicio) {
-                    alert('La fecha de inicio es requerida.');
-                    $('#FechaInicioViaje').focus();
-                    return;
-                }
-
-                if (!fechaFin) {
-                    alert('La fecha de fin es requerida.');
-                    $('#FechaFinViaje').focus();
-                    return;
-                }
-
                 var formData = {
                     Destino: destino,
                     Motivo: motivo,
-                    FechaInicioViaje: fechaInicio,
-                    FechaFinViaje: fechaFin,
-                    PresupuestoEstimado: presupuesto
+                    FechaInicioViaje: fechaInicioStr,
+                    FechaFinViaje: fechaFinStr
                 };
 
                 $.ajax({
@@ -215,9 +327,12 @@
                     success: function (response) {
                         if (response.success) {
                             alert(response.message);
+                            $('#IdSolicitudViajeHidden').val(response.idSolicitud);
+                            $('#btnAgregarGasto').show();
                             $('#modalNuevaSolicitud').modal('hide');
+                            cargarTiposGasto();
+                            $('#modalAgregarGasto').modal('show');
                             $('#formNuevaSolicitud')[0].reset();
-                            location.reload();
                         } else {
                             alert('Error: ' + response.message);
                         }
@@ -228,11 +343,76 @@
                 });
             });
 
-            // Ponemos la fecha mínima como hoy para que no pueda elegir fechas pasadas
+            // --- AGREGAR GASTO ---
+            function cargarTiposGasto() {
+                $.getJSON('/Gastos/ObtenerTiposGasto', function (data) {
+                    var select = $('#tipoGasto');
+                    select.empty();
+                    select.append('<option value="">Seleccione...</option>');
+                    data.forEach(function (item) {
+                        select.append(`<option value="${item.value}">${item.text}</option>`);
+                    });
+                });
+            }
+
+            $('#btnAgregarGasto').on('click', function () {
+                cargarTiposGasto();
+                $('#modalAgregarGasto').modal('show'); 
+            });
+
+            $('#btnRegresarSolicitud').on('click', function () {
+                var idSolicitud = $('#IdSolicitudViajeHidden').val();
+                $.getJSON('/Gastos/VerificarGastos', { idSolicitud: idSolicitud }, function (data) {
+                    if (data.tieneGastos) {
+                        $('#modalAgregarGasto').modal('hide');
+                    } else {
+                        alert('Debe registrar al menos un gasto antes de salir.');
+                    }
+                });
+            });
+
+            $('#formAgregarGasto').on('submit', function (e) {
+                e.preventDefault();
+
+                var monto = parseFloat($('#montoGasto').val());
+                if (isNaN(monto) || monto <= 0) {
+                    alert('El monto debe ser mayor a 0.');
+                    $('#montoGasto').focus();
+                    return;
+                }
+
+                var gastoData = {
+                    IdSolicitudViaje: $('#IdSolicitudViajeHidden').val(),
+                    IdTipoGasto: $('#tipoGasto').val(),
+                    DescripcionGasto: $('#descripcionGasto').val(),
+                    MontoGasto: monto
+                };
+
+                $.ajax({
+                    url: '@Url.Action("AgregarGasto", "Gastos")',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(gastoData),
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            $('#modalAgregarGasto').modal('hide'); 
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Error al procesar el gasto. Por favor, intente nuevamente.');
+                    }
+                });
+            });
+
+            // --- Restricciones de fechas ---
             var hoy = new Date().toISOString().split('T')[0];
             $('#FechaInicioViaje').attr('min', hoy);
             $('#FechaFinViaje').attr('min', hoy);
         });
     </script>
 }
+
 

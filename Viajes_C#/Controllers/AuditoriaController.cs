@@ -46,11 +46,13 @@ namespace Viajes.Controllers
 
             return View(filtro);
         }
+
         [HttpPost]
         public IActionResult ExportarPDF(AuditoriaFiltroDto filtro)
         {
             string logoPath = Path.Combine(_env.ContentRootPath, "Imagenes", "logo_Reporte.png");
             // 1. Consultar registros con los filtros
+
             var registros = AuditoriaService.ConsultarAuditoriaFiltrada(filtro);
 
             // 2. Generar PDF
